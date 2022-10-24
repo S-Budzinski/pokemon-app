@@ -35,7 +35,9 @@ function App() {
           </button>
       </div>
       <div className='w-full h-[670px] text-center bg-slate-200 flex'>
-          <div></div>
+          <div className=''>
+            {data.sprites ?<img src={data.sprites.front_default} className='w-64 content-end'></img> : null}
+          </div>
           <div></div>
       </div>
     </div>
