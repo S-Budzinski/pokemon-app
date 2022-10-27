@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import ImageCard from './ImageCard';
 import DescCard from './DescCard';
+import Button from './Button';
 
 function App() {
   const [data, setData] = useState({})
@@ -28,16 +29,15 @@ function App() {
             onChange={(e) => {setPokemon(e.target.value)}}
           >
           </input>
-          <button className='ring-4 ring-pink-400 focus:ring-pink-500 hover:bg-pink-400 p-2 rounded-md text-white w-64 m-auto'
-          onClick={searchPokemon}
-          >
-            Search Pokemon
-          </button>
+          <Button
+          searchPokemon={searchPokemon}
+          />
       </div>
       <div className='w-full h-[670px] text-center bg-slate-200 flex justify-around pt-24'>
-          {data.sprites ? <ImageCard
+          {data.sprites || data.types ? <ImageCard
             img={data.sprites.front_default}
             name={data.name}
+            type={data.types[0].type.name}
           /> : null}
           {data.sprites ? <DescCard
             weight={data.weight}
